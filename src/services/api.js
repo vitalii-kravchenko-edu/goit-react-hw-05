@@ -63,3 +63,18 @@ export const getMovieReviews = async (movieId) => {
   const { data } = await axios.request(options);
   return data;
 };
+
+export const getSearchMovies = async (query) => {
+  const options = {
+    method: "GET",
+    url: `${BASE_URL}/search/movie?query=${query}`,
+    params: { include_adult: "false", language: "en-US" },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${ACCESS_KEY}`,
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return data;
+};
